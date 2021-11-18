@@ -10,9 +10,19 @@ function generatePassword(){
   const confirmLowercase = window.confirm("Click OK to include lowercase letters.");
   const confirmNumber = window.confirm("Click OK to include numbers.");
   const confirmSpecial = window.confirm("Click OK to include special characters.");
-  
+
+  var characters = "";
+  var generatedPassword = "";
+
   console.log(confirmUppercase, confirmLowercase, confirmNumber, confirmSpecial);
-  return "Password here";
+
+  var characterOptions = confirmUppercase + confirmLowercase + confirmNumber + confirmSpecial;
+  if (characterOptions === 0) {
+    generatedPassword = generatedPassword + 'Please pick at least one character type!';
+    return generatedPassword;
+  } else {
+    return "Password here"
+  }
 }
 
 // "Generate" button
