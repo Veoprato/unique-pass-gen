@@ -6,6 +6,8 @@ const charSpecial = "!#$%&'()*+-./:;<=>?@[]^_`{|}~";
 
 function generatePassword(){
   var passwordLength = "";
+  var characters = "";
+  var generatedPassword = "";
   
   passwordLength = window.prompt("How many characters would you like your password to be? (Must be 8-128 Characters)");
   while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)){
@@ -16,19 +18,32 @@ function generatePassword(){
   const confirmNumber = window.confirm("Click OK to include numbers.");
   const confirmSpecial = window.confirm("Click OK to include special characters.");
 
-  var characters = "";
-  var generatedPassword = "";
-
   console.log(confirmUppercase, confirmLowercase, confirmNumber, confirmSpecial);
 
   var characterOptions = confirmUppercase + confirmLowercase + confirmNumber + confirmSpecial;
-
   if (characterOptions === 0) {
-    generatedPassword = generatedPassword + 'Please pick at least one character type!';
-    return generatedPassword;
-  } else {
-    return "Password here"
+    window.alert("Select at least one condition for password! Try again.");
+    generatePassword();
   }
+  
+  if (confirmUppercase) {
+    characters = characters.concat(charUpper);
+  }
+  if (confirmLowercase) {
+    characters = characters.concat(charLower);
+  }
+  if (confirmNumber) {
+    characters = characters.concat(charNumber);
+  }
+  if (confirmSpecial) {
+    characters = characters.concat(charSpecial);
+  }
+
+  for (i = 0; i < passwordLength; i++) {
+    var index = Math.floor(Math.random() * characters.length);
+     generatedPassword += characters[index];
+  }
+  return generatedPassword;
 }
 
 // "Generate" button
