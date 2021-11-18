@@ -1,4 +1,9 @@
 // Assignment Code
+const charUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const charLower = "abcdefghijklmnopqrstuvwxyz";
+const charNumber = "1234567890";
+const charSpecial = "!#$%&'()*+-./:;<=>?@[]^_`{|}~";
+
 function generatePassword(){
   var passwordLength = "";
   
@@ -17,6 +22,7 @@ function generatePassword(){
   console.log(confirmUppercase, confirmLowercase, confirmNumber, confirmSpecial);
 
   var characterOptions = confirmUppercase + confirmLowercase + confirmNumber + confirmSpecial;
+
   if (characterOptions === 0) {
     generatedPassword = generatedPassword + 'Please pick at least one character type!';
     return generatedPassword;
