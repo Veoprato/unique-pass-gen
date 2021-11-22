@@ -2,14 +2,14 @@
 const charUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const charLower = "abcdefghijklmnopqrstuvwxyz";
 const charNumber = "1234567890";
-const charSpecial = "!#$%&'()*+-./:;<=>?@[]^_`{|}~";
+const charSpecial = "!#$%&()*+-./:;<=>?@[]^_`{|}~";
 
 // Generate Password Function
-function generatePassword(){
+function generatePassword() {
   // Local vars for password
   var passwordLength = "";
   var characters = "";
-  var generatedPassword = "";
+  var generatedPassword = [];
   
   // Password criteria
   passwordLength = window.prompt("How many characters would you like your password to be? (Must be 8-128 Characters)");
@@ -18,10 +18,10 @@ function generatePassword(){
       passwordLength = window.prompt("Not a valid character count! Please try again. (Must be 8-128 Characters)");
   }
 
-  const confirmUppercase = window.confirm("Click OK to include uppercase letters.");
-  const confirmLowercase = window.confirm("Click OK to include lowercase letters.");
-  const confirmNumber = window.confirm("Click OK to include numbers.");
-  const confirmSpecial = window.confirm("Click OK to include special characters.");
+  var confirmUppercase = window.confirm("Click OK to include uppercase letters.");
+  var confirmLowercase = window.confirm("Click OK to include lowercase letters.");
+  var confirmNumber = window.confirm("Click OK to include numbers.");
+  var confirmSpecial = window.confirm("Click OK to include special characters.");
 
   // if none of the criteria are selected
   var characterOptions = confirmUppercase + confirmLowercase + confirmNumber + confirmSpecial;
@@ -49,6 +49,9 @@ function generatePassword(){
     var index = Math.floor(Math.random() * characters.length);
      generatedPassword += characters[index];
   }
+
+  console.log(generatedPassword)
+
   return generatedPassword;
 }
 
